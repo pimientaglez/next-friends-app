@@ -11,9 +11,6 @@ export default function Home() {
       <h1>
         Main Page
       </h1>
-      {navLinks.map(link => {
-          return <Link href={link.href} key={link.name}>{link.name}</Link>
-      })}
     </main>
   );
 }

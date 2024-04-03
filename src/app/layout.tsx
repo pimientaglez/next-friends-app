@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from 'next/link';
+
+const navLinks = [
+  {name: "Profile", href: "/profile"},
+  {name: "Posts", href: "/posts"},
+];
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {navLinks.map(link => {
+            return <Link href={link.href} key={link.name}>{link.name}</Link>
+        })}
+        {children}
+      </body>
     </html>
   );
 }
