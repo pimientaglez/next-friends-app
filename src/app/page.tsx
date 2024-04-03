@@ -1,11 +1,19 @@
 import Link from 'next/link';
 
+const navLinks = [
+  {name: "Profile", href: "/profile"},
+  {name: "Posts", href: "/posts"},
+];
+
 export default function Home() {
   return (
     <main>
-      Main Page
-      <h2><Link href="/profile">Profile</Link></h2>
-      <h2><Link href="/posts">Posts</Link></h2>
+      <h1>
+        Main Page
+      </h1>
+      {navLinks.map(link => {
+          return <Link href={link.href} key={link.name}>{link.name}</Link>
+      })}
     </main>
   );
 }
