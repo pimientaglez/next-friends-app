@@ -2,12 +2,14 @@
 import {useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
+import type {User} from "../profile/page";
 
 export type Post = {
   id: string;
   content: string;
-  timestamp: string,
-  likes: number,
+  timestamp: string;
+  likes: number;
+  user: User;
 };
 
 export default function Posts({params}: {params: {id: string}}) {
@@ -28,21 +30,21 @@ export default function Posts({params}: {params: {id: string}}) {
       getPost();
     }, [])
 
-    const router = useRouter();
-    const handleClick = (id: string) => {
-        router.push(`posts/${id}`);
-    }
-    
+    const router = useRouter();    
     
     return (
         <main>
             {(posts && posts.length > 0) && (
                 posts.map((post) => {
                     return (
-                        <div key={post?.id} onClick={()=>{handleClick(post.id)}}>
+                        <div key={post?.id} className="mb-2 mt-2">
+                            <h3 className="font-bold mr-4">{`${post?.user?.first_name} ${post?.user?.last_name}`}</h3>
                             <h2>{post?.content}</h2>
                             <h2>{post?.timestamp}</h2>
                             <h2>{post?.likes}</h2>
+                            <Link href={`posts/${post?.id}`}>
+                                <span className="text-blue-500">See Detail</span>
+                            </Link>
                         </div> 
                     )
                 })

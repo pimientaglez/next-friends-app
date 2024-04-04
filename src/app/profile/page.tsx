@@ -2,7 +2,7 @@
 import {useState, useEffect} from "react";
 import Link from 'next/link';
 
-type User = {
+export type User = {
     id?: number;
     username?: string;
     first_name?: string;

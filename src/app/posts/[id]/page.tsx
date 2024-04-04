@@ -1,13 +1,7 @@
 "use client"
 import {useState, useEffect} from "react";
 import Link from 'next/link';
-
-export type Post = {
-  id: string;
-  content: string;
-  timestamp: string,
-  likes: number,
-};
+import type {Post} from "../page";
 
 export default function PostID({params}: {params: {id: string}}) {
     const [post, setPost] = useState<Post | null>(null); 
@@ -32,6 +26,7 @@ export default function PostID({params}: {params: {id: string}}) {
         <main>
             {post && 
                 <>
+                    <h3 className="font-bold mr-4">{`${post?.user?.first_name} ${post?.user?.last_name}`}</h3>
                     <h2>{post?.content}</h2>
                     <h2>{post?.timestamp}</h2>
                     <h2>{post?.likes}</h2>
