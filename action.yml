@@ -1,5 +1,11 @@
 name: Ricardos Github Action
 description: This action greets persons
+inputs:
+  person: 
+    description: people to greet
+    required: true
+    default: 'Monolisa Octocat'
+    
 runs:
   using: node20
   main: src/action.js
