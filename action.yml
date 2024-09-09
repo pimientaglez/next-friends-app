@@ -1,5 +1,5 @@
 name: Ricardos Github Action
 description: This action greets persons
 runs:
-  using: node16
+  using: node20
   main: src/action.js
